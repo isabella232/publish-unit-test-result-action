@@ -40,6 +40,7 @@ class Settings:
     report_individual_runs: bool
     dedup_classes_by_file_name: bool
     check_run_annotation: List[str]
+    test_case_annotations: bool
 
 
 class Publisher:
@@ -177,7 +178,10 @@ class Publisher:
         logger.debug(f'stats with delta: {stats_with_delta}')
 
         error_annotations = get_error_annotations(stats.errors)
-        case_annotations = get_case_annotations(cases, self._settings.report_individual_runs)
+        if self._settings.test_case_annotations:
+            case_annotations = get_case_annotations(cases, self._settings.report_individual_runs)
+        else:
+            case_annotations = []
         file_list_annotations = self.get_test_list_annotations(cases)
         all_annotations = error_annotations + case_annotations + file_list_annotations
 

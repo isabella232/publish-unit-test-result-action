@@ -170,7 +170,8 @@ def get_settings(options: dict) -> Settings:
         hide_comment_mode=get_var('HIDE_COMMENTS', options) or 'all but latest',
         report_individual_runs=get_var('REPORT_INDIVIDUAL_RUNS', options) == 'true',
         dedup_classes_by_file_name=get_var('DEDUPLICATE_CLASSES_BY_FILE_NAME', options) == 'true',
-        check_run_annotation=annotations
+        check_run_annotation=annotations,
+        test_case_annotations=get_var('TEST_CASE_ANNOTATIONS', options) != 'false',
     )
 
     check_var(settings.token, 'GITHUB_TOKEN', 'GitHub token')

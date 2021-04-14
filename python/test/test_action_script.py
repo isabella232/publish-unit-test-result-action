@@ -135,7 +135,8 @@ class Test(unittest.TestCase):
                      hide_comment_mode='off',
                      report_individual_runs=True,
                      dedup_classes_by_file_name=True,
-                     check_run_annotation=[]):
+                     check_run_annotation=[],
+                     test_case_annotations=True):
         return Settings(
             token=token,
             api_url=api_url,
@@ -156,7 +157,8 @@ class Test(unittest.TestCase):
             hide_comment_mode=hide_comment_mode,
             report_individual_runs=report_individual_runs,
             dedup_classes_by_file_name=dedup_classes_by_file_name,
-            check_run_annotation=check_run_annotation.copy()
+            check_run_annotation=check_run_annotation.copy(),
+            test_case_annotations=test_case_annotations,
         )
 
     def test_get_settings(self):
